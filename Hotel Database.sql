@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS hotel_table (
     reservation_status_date DATE
 );
 
-
+drop table hotel_table 
 
 --Meal_cost 
 CREATE TABLE IF NOT EXISTS meal_cost(
@@ -48,11 +48,15 @@ CREATE TABLE IF NOT EXISTS market_segment (
 );
  drop table market_segment
 
-SELECT * FROM hotel_table;
+	 --QUERIES--
+SELECT * FROM hotel_table
 
-SELECT * FROM meal_cost;
+SELECT * FROM meal_cost
 
-SELECT * FROM market_segment;
+SELECT * FROM market_segment
 
-SELECT * FROM hotel_table WHERE arrival_date_year = 2019;
+--Change in Revenue Query 
 
+select arrival_date_year, hotel, 
+sum((stays_in_week_nights + stays_in_weekend_nights)* adr)
+as revenue from hotel_table group by arrival_date_year, hotel
