@@ -36,13 +36,13 @@ CREATE TABLE IF NOT EXISTS hotel_table (
 drop table hotel_table 
 
 --Meal_cost 
-CREATE TABLE IF NOT EXISTS meal_cost(
+CREATE TABLE IF NOT EXISTS meal_costs(
 	Cost FLOAT,
 	meal VARCHAR(40)
 );
-
+drop table meal_cost
 --Market_Segment
-CREATE TABLE IF NOT EXISTS market_segment (
+CREATE TABLE IF NOT EXISTS market_segments (
     Discount decimal (7,2),
     market_segment VARCHAR(255)
 );
@@ -51,10 +51,18 @@ CREATE TABLE IF NOT EXISTS market_segment (
 	 --QUERIES--
 SELECT * FROM hotel_table
 
-SELECT * FROM meal_cost
+SELECT * FROM meal_costs
 
-SELECT * FROM market_segment
+SELECT * FROM market_segments
 
+--Combine meal cost and market segment 
+
+select * from hotel_table 
+left join market_segments
+on hotel_table.market_segment = market_segments.market_segment
+left join meal_costs
+on meal_costs.meal = hotel_table.meal;
+	 
 --Change in Revenue Query 
 
 select arrival_date_year, hotel, 
