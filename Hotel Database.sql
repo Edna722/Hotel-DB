@@ -68,3 +68,5 @@ on meal_costs.meal = hotel_table.meal;
 select arrival_date_year, hotel, 
 sum((stays_in_week_nights + stays_in_weekend_nights)* adr)
 as revenue from hotel_table group by arrival_date_year, hotel
+
+
